@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<robot name="newbot2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:include filename="$(find newbot2)/urdf/newbot2.gazebo" />
+  <xacro:include filename="$(find newbot2)/urdf/newbot2.urdf" />
+</robot>

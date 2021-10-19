@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot>
+    <!--ros_control plugin-->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/newbot2</robotNamespace>
+        </plugin>
+    </gazebo>
+
+    <!--Wheels-->
+    <gazebo reference="WFL_L">
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+    </gazebo>
+
+    <gazebo reference="WFR_L">
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+    </gazebo>
+    
+    <gazebo reference="WRL_L">
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+    </gazebo>
+
+    <gazebo reference="WRR_L">
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+    </gazebo>
+
+</robot>
+

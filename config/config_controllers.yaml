@@ -1,0 +1,27 @@
+# Robot name goes here
+newbot2:  # change the name
+  # default controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Controller 1
+  FL_J_controller: # change the name
+    type: effort_controllers/JointPositionController # Type of controller. 
+    joint: 'FL_J' # Name of the joint.  
+    pid: {p: 100, i: 0.0, d: 0.0} # Enter your pid values eg. {p: 100.0 , i: 0.0 , d: 0.0} 
+
+  # Controller 1
+  FR_J_controller: # change the name
+    type: effort_controllers/JointPositionController # Type of controller. 
+    joint: 'FR_J' # Name of the joint.  
+    pid: {p: 100, i: 0.0, d: 0.0} # Enter your pid values eg. {p: 100.0 , i: 0.0 , d: 0.0} 
+
+
+  # Controller 2
+  # Controller 3
+  # ....
+  # Controller n
+
+
+ 

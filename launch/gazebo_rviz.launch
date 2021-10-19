@@ -10,7 +10,6 @@
 
   <arg name="model" default="$(find newbot2)/urdf/newbot2.xacro"/>
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
-  <!--arg name="my_robot" value="newbot2"/-->
   <param name="my_robot" value="newbot2"/>
   <arg name="init_pose" value="-x 0 -y 0 -z 0 -R 0 -P 0 -Y 0"/>
 
@@ -30,11 +29,17 @@
   <rosparam command="load"
             file="$(find newbot2)/config/config_controllers.yaml"/>
 
-
   <node name="car_controller_spawner" pkg="controller_manager" type="spawner"
     args="newbot2/joint_state_controller
           newbot2/FL_J_controller 
           newbot2/FR_J_controller "/>
+
+  <!--robot state publisher-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!--rviz-->
+  <arg name="rvizconfig" default="$(find newbot2)/rviz/urdf.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
 
 
 </launch>

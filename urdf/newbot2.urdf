@@ -4,12 +4,12 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="newbot2">
-  <link name="world">
+  <link name="dummy">
   </link>
   <joint
-    name="world_J"
+    name="dummy"
     type="fixed">
-    <parent link="world"/>
+    <parent link="dummy"/>
     <child link="base_link"/>
   </joint>
 
@@ -105,8 +105,8 @@
       link="FL_L" />
     <axis
       xyz="0 0 1" />
-    <dynamics friction="1" />
-    <limit effort="10.0" lower="-1" upper="1" velocity="0.5"/>
+    <dynamics friction="0.1" />
+    <limit effort="100.0" lower="-1" upper="1" velocity="10"/>
   </joint>
   <link
     name="WFL_L">
@@ -160,6 +160,7 @@
       link="WFL_L" />
     <axis
       xyz="0 1 0" />
+    <limit effort="100.0" velocity="10"/>
   </joint>
   <link
     name="FR_L">
@@ -213,8 +214,8 @@
       link="FR_L" />
     <axis
       xyz="0 0 1" />
-    <dynamics friction="1" />
-    <limit effort="10.0" lower="-1" upper="1" velocity="0.5"/>
+    <dynamics friction="0.1" />
+    <limit effort="100.0" lower="-1" upper="1" velocity="10"/>
   </joint>
   <link
     name="WFR_L">
@@ -268,6 +269,7 @@
       link="WFR_L" />
     <axis
       xyz="0 1 0" />
+    <limit effort="100.0" velocity="10"/>
   </joint>
   <link
     name="RL_L">
@@ -374,6 +376,7 @@
       link="WRL_L" />
     <axis
       xyz="0 1 0" />
+    <limit effort="100.0" velocity="10"/>
   </joint>
   <link
     name="RR_L">
@@ -480,6 +483,7 @@
       link="WRR_L" />
     <axis
       xyz="0 1 0" />
+    <limit effort="100.0" velocity="10"/>
   </joint>
 
   <transmission name="WFL_T">

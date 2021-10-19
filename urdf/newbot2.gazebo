@@ -9,23 +9,23 @@
 
    <!--Wheels-->
   <gazebo reference="WFL_L">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
+    <mu1>200</mu1>
+    <mu2>100</mu2>
   </gazebo>
 
   <gazebo reference="WFR_L">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
+    <mu1>200</mu1>
+    <mu2>100</mu2>
   </gazebo>
   
   <gazebo reference="WRL_L">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
+    <mu1>200</mu1>
+    <mu2>100</mu2>
   </gazebo>
 
   <gazebo reference="WRR_L">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
+    <mu1>200</mu1>
+    <mu2>100</mu2>
   </gazebo>
 
 </robot>

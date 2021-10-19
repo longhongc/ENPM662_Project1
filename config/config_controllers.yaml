@@ -3,7 +3,7 @@ newbot2:  # change the name
   # default controller
   joint_state_controller:
     type: joint_state_controller/JointStateController
-    publish_rate: 50
+    publish_rate: 1
 
   # Controller 1
   FL_J_controller: # change the name

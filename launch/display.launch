@@ -5,7 +5,9 @@
 
   <arg name="rvizconfig" default="$(find newbot2)/rviz/urdf.rviz" />
 
-  <node
+  <arg name="use_gazebo" default="false" />
+
+  <node unless="$(arg use_gazebo)"
     name="joint_state_publisher_gui"
     pkg="joint_state_publisher_gui"
     type="joint_state_publisher_gui" />

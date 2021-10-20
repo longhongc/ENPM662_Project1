@@ -4,4 +4,5 @@
   
   <xacro:include filename="$(find newbot2)/urdf/newbot2.gazebo" />
   <xacro:include filename="$(find newbot2)/urdf/newbot2.urdf" />
+  <xacro:include filename="$(find newbot2)/urdf/front_driving_transmission.urdf" />
 </robot>

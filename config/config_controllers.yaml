@@ -22,8 +22,9 @@ newbot2:  # change the name
   #   joint: 'FR_J' # Name of the joint.  
   #   pid: {p: 50, i: 0.5, d: 10} # Enter your pid values eg. {p: 100.0 , i: 0.0 , d: 0.0} 
   #
-  # Controller for front wheels WFL WFo
-  driving_controller:
+  
+  # Controller for front wheels WFL WFR
+  front_driving_controller:
     type: velocity_controllers/JointGroupVelocityController
     joints:
         - WFL_J
@@ -32,15 +33,16 @@ newbot2:  # change the name
         WFL_J: {p: 10, i: 1.0, d: 0.0}
         WFR_J: {p: 10, i: 1.0, d: 0.0}
 
-  # rear_wheels_controller:
-  #   type: velocity_controllers/JointGroupVelocityController
-  #   joints:
-  #       - WRL_J
-  #       - WRR_J
-  #   pid_gains: 
-  #       WRL_J: {p: 0, i: 0, d: 0.0}
-  #       WRR_J: {p: 0, i: 0, d: 0.0}
-  #       
+  # Controller for rear wheels WRL WRR
+  rear_driving_controller:
+    type: velocity_controllers/JointGroupVelocityController
+    joints:
+        - WRL_J
+        - WRR_J
+    pid_gains: 
+        WRL_J: {p: 10, i: 1.0, d: 0.0}
+        WRR_J: {p: 10, i: 1.0, d: 0.0}
+
 
   # Controller 2
   # Controller 3

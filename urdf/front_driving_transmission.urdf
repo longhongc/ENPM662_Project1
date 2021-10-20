@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot>
+  <!-- front wheels transmission -->
+  <transmission name="WFL_T">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="WFL_J">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="WFL_M">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>5</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="WFR_T">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="WFR_J">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="WFR_M">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>5</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- front steering -->
+  <transmission name="FL_T">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FL_J">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="FL_M">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>5</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="FR_T">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FR_J">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="FR_M">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>5</mechanicalReduction>
+    </actuator>
+  </transmission>
+    
+</robot>
+

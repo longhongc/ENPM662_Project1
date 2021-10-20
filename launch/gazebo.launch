@@ -32,7 +32,7 @@
 
   <!--controller-->
   <rosparam command="load"
-            file="$(find newbot2)/config/$(arg driving_type)_driving.yaml"/>
+      file="$(find newbot2)/config/controllers/$(arg driving_type)_driving.yaml"/>
 
 
   <node name="car_controller_spawner" pkg="controller_manager" type="spawner"

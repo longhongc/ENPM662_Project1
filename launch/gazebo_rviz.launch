@@ -31,10 +31,8 @@
 
   <node name="car_controller_spawner" pkg="controller_manager" type="spawner"
     args="newbot2/joint_state_controller
-          newbot2/FL_J_controller  
-          newbot2/front_wheels_controller"/>
-          <!-- newbot2/rear_wheels_controller "/> -->
-          <!--  -->
+          newbot2/steering_controller  
+          newbot2/driving_controller"/>
 
   <!--robot state publisher-->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />

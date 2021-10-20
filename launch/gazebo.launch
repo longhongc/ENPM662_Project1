@@ -9,8 +9,13 @@
     args="0 0 0 0 0 0 dummy base_footprint 40" />
 
   <arg name="model" default="$(find newbot2)/urdf/newbot2.xacro"/>
-  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <!--   three driving type front, rear, four(todo) -->
+  <arg name="driving_type" default="front"/>
+  <param name="driving_type_param" value="$(arg driving_type)"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model) driving_type:=$(arg driving_type)" />
   <param name="my_robot" value="newbot2"/>
+
   <arg name="init_pose" value="-x 0 -y 0 -z 0 -R 0 -P 0 -Y 0"/>
 
   <node
@@ -27,13 +32,13 @@
 
   <!--controller-->
   <rosparam command="load"
-            file="$(find newbot2)/config/config_controllers.yaml"/>
+            file="$(find newbot2)/config/$(arg driving_type)_driving.yaml"/>
 
 
   <node name="car_controller_spawner" pkg="controller_manager" type="spawner"
     args="newbot2/joint_state_controller
           newbot2/steering_controller  
-          newbot2/front_driving_controller"/>
+          newbot2/driving_controller_$(arg driving_type)"/>
  
 
 </launch>

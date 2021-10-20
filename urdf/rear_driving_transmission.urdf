@@ -4,20 +4,22 @@
   <transmission name="WRL_T">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="WRL_J">
-      <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="WRL_M">
-      <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>5</mechanicalReduction>
     </actuator>
   </transmission>
 
   <transmission name="WRR_T">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="WRR_J">
-      <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="WRR_M">
-      <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>5</mechanicalReduction>
     </actuator>
   </transmission>
 

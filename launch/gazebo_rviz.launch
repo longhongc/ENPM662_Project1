@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
+  <arg name="driving_type" default="front" />
   <!-- gazebo-->
-  <include
-    file="$(find newbot2)/launch/gazebo.launch" />
+  <include file="$(find newbot2)/launch/gazebo.launch">
+    <arg name="driving_type" value="$(arg driving_type)" />
+  </include>
 
   <!-- rviz-->
   <include file="$(find newbot2)/launch/display.launch">
+    <arg name="driving_type" value="$(arg driving_type)" />
     <arg name="use_gazebo" value="true" />
   </include>
 

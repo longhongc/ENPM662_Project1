@@ -6,6 +6,6 @@
   <xacro:include filename="$(find newbot2)/urdf/newbot2.urdf" />
 
   <!--   three driving type front, rear, four(todo) -->
-  <xacro:arg name="driving_type" default="front"/>
+  <xacro:arg name="driving_type" default="rear"/>
   <xacro:include filename="$(find newbot2)/urdf/driving_transmission/$(arg driving_type)_driving_transmission.urdf" />
 </robot>

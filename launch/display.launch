@@ -2,7 +2,7 @@
 <launch>
   <arg name="model" default="$(find newbot2)/urdf/newbot2.xacro"/>
   <!--   three driving type front, rear, four(todo) -->
-  <arg name="driving_type" default="front"/>
+  <arg name="driving_type" default="rear"/>
   <param name="robot_description" command="$(find xacro)/xacro $(arg model) driving_type:=$(arg driving_type)" />
 
   <arg name="rvizconfig" default="$(find newbot2)/rviz/urdf.rviz" />

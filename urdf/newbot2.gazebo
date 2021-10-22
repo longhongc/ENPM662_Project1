@@ -8,11 +8,45 @@
   </gazebo>
 
   <gazebo>
-      <plugin name="gazebo_mimic_joint" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
-        <joint>FL_J</joint> 
-        <mimicJoint>FR_J</mimicJoint>
-      </plugin>
+    <plugin name="gazebo_mimic_joint" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+      <joint>FL_J</joint> 
+      <mimicJoint>FR_J</mimicJoint>
+    </plugin>
   </gazebo>
+
+  <gazebo reference="Lidar_L">
+    <sensor type="ray" name="head_rplidar_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>400</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.15</min>
+          <max>6.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_rplidar_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>Lidar_L</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
 
    <!--Wheels-->
   <gazebo reference="WFL_L">

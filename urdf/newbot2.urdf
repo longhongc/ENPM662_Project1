@@ -486,4 +486,58 @@
     <limit effort="100.0" velocity="10"/>
   </joint>
 
+  <link
+    name="Lidar_L">
+    <inertial>
+      <origin
+        xyz="0.0120602592799751 -0.00053210527907946 0.260701111505393"
+        rpy="0 0 0" />
+      <mass
+        value="0.0730843684055266" />
+      <inertia
+        ixx="1.95811928690083E-05"
+        ixy="-1.03772873853058E-07"
+        ixz="-4.28353568405992E-07"
+        iyy="2.41241304548272E-05"
+        iyz="9.42528600159915E-09"
+        izz="4.14178195674061E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot2/meshes/Lidar_L.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://newbot2/meshes/Lidar_L.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Lidar_J"
+    type="fixed">
+    <origin
+      xyz="0 0 0.3"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Lidar_L" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
 </robot>

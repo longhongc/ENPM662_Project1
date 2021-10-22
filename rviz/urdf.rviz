@@ -8,8 +8,8 @@ Visualization Manager:
     - Class: rviz/Grid
       Name: Grid
       Value: true
-    - Alpha: 0.8
-      Class: rviz/RobotModel
+      Alpha: 0.8
+    - Class: rviz/RobotModel
       Enabled: true
       Name: RobotModel
       Robot Description: robot_description

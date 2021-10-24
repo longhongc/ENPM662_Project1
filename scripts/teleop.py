@@ -13,7 +13,7 @@ import getch
 import rospy
 from std_msgs.msg import Float64, Float64MultiArray
 
-class steering_talker:
+class SteeringTalker:
 
     def __init__(self):
         self.pub = rospy.Publisher("/newbot2/steering_controller/command", Float64, queue_size=10)
@@ -21,8 +21,7 @@ class steering_talker:
         self.min_angle = -1
         self.max_angle = 1
         self.steering_angle = 0
-    def send_msg(self, key):
-        msg = Float64()
+    def update_key(self, key):
         # Left
         if(key=='A' or key=='a'):
             self.steering_angle += 0.2 
@@ -32,15 +31,24 @@ class steering_talker:
         # Reset
         elif(key=='S' or key=='s'):
             self.steering_angle = 0.0
+
+        self.steering_angle = self.clip_angle(self.steering_angle)
+
+    def update_value(self, angle):
+        self.steering_angle = self.clip_angle(angle)
+
+    def send_msg(self):
+        msg = Float64()
         msg.data = self.steering_angle
-        print("Steering Angle: ", msg.data)
+        rospy.loginfo("Steering Angle: %s", str(msg.data))
         self.pub.publish(msg)
 
-    def clip_angle(self):
-        self.steering_angle = min(max_angle, self.steering_angle)
-        self.steering_angle = max(min_angle, self.steering_angle)
-
-class driving_talker:
+    def clip_angle(self, angle):
+        clipped = min(self.max_angle, angle)
+        clipped = max(self.min_angle, clipped)
+        return clipped
+    
+class DrivingTalker:
 
     def __init__(self):
         self.pub = rospy.Publisher("/newbot2/driving_controller_rear/command", Float64MultiArray, queue_size=10)
@@ -48,8 +56,7 @@ class driving_talker:
         self.left_vel = 0
         self.right_vel = 0
         self.wheels_velocity = [self.left_vel, self.right_vel]
-    def send_msg(self, key):
-        msg = Float64MultiArray()
+    def update_key(self, key):
         # Forward
         if(key=='W' or key=='w'):
             self.left_vel += 1
@@ -63,19 +70,31 @@ class driving_talker:
             self.left_vel = 0.0
             self.right_vel = 0.0
         self.wheels_velocity = [self.left_vel, self.right_vel] 
+
+    def update_value(self, vel):
+        self.left_vel = vel[0]
+        self.right_vel = vel[1]
+        self.wheels_velocity = vel
+
+    def send_msg(self):
+        msg = Float64MultiArray()
         msg.data = self.wheels_velocity
-        print("Driving Speed: ", msg.data)
+        rospy.loginfo("Driving Speed: %s", str(msg.data))
         self.pub.publish(msg)
+
+
         
 def parse_input(input_key, steering_pub, driving_pub):
     steering_keys=['A', 'a', 'D', 'd', 'S', 's']
     driving_keys=['W', 'w', 'X', 'x', 'S', 's']
 
     if(input_key in steering_keys):
-        steering_pub.send_msg(input_key)
+        steering_pub.update_key(input_key)
+        steering_pub.send_msg()
 
     if(input_key in driving_keys):
-        driving_pub.send_msg(input_key)
+        driving_pub.update_key(input_key)
+        driving_pub.send_msg()
 
 def signal_handler(sig, frame):
     print("")
@@ -86,8 +105,8 @@ def signal_handler(sig, frame):
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
     rospy.init_node("teleop_talker", anonymous=True)
-    steering_pub = steering_talker()
-    driving_pub = driving_talker()
+    steering_pub = SteeringTalker()
+    driving_pub = DrivingTalker()
     while not rospy.is_shutdown():
         # get user key input with enter
         val = getch.getch() 

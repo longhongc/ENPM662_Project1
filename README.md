@@ -1,5 +1,19 @@
 # CAD Modelling & Simulation using Gazebo 
+This project is to use SolidWorks to model a simple steerable car and control it in gazebo simulator. 
 
+The CAD model is exported into urdf files by using the sw_urdf tool. The urdf files is parsible by gazebo. After adding the transmission properties and controller configurations for the interface of ros-controller. The robot can be simulated in gazebo and be controlled through several joints and velocity commands.   
+
+## Directory Structure
+```
+├── config (controllers setting)
+├── launch 
+├── meshes 
+├── rviz (rviz setting)
+├── scripts (executable python scripts)
+├── textures
+├── urdf 
+└── worlds
+```
 ## Environment
 Ubuntu 18.04  
 ROS Melodic

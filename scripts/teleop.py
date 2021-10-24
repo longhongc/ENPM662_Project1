@@ -18,18 +18,27 @@ class steering_talker:
     def __init__(self):
         self.pub = rospy.Publisher("/newbot2/steering_controller/command", Float64, queue_size=10)
         self.rate = rospy.Rate(10)
+        self.min_angle = -1
+        self.max_angle = 1
         self.steering_angle = 0
     def send_msg(self, key):
+        msg = Float64()
         # Left
         if(key=='A' or key=='a'):
-            self.steering_angle += 0.2
+            self.steering_angle += 0.2 
         # Right
         elif(key=='D' or key=='d'):
             self.steering_angle -= 0.2
         # Reset
         elif(key=='S' or key=='s'):
             self.steering_angle = 0.0
-        self.pub.publish(self.steering_angle)
+        msg.data = self.steering_angle
+        print("Steering Angle: ", msg.data)
+        self.pub.publish(msg)
+
+    def clip_angle(self):
+        self.steering_angle = min(max_angle, self.steering_angle)
+        self.steering_angle = max(min_angle, self.steering_angle)
 
 class driving_talker:
 
@@ -43,18 +52,19 @@ class driving_talker:
         msg = Float64MultiArray()
         # Forward
         if(key=='W' or key=='w'):
-            self.left_vel += 0.1
-            self.right_vel += 0.1
+            self.left_vel += 1
+            self.right_vel += 1
         # Backward
         elif(key=='X' or key=='x'):
-            self.left_vel -= 0.1
-            self.right_vel -= 0.1
+            self.left_vel -= 1
+            self.right_vel -= 1
         # Stop
         elif(key=='S' or key=='s'):
             self.left_vel = 0.0
             self.right_vel = 0.0
         self.wheels_velocity = [self.left_vel, self.right_vel] 
         msg.data = self.wheels_velocity
+        print("Driving Speed: ", msg.data)
         self.pub.publish(msg)
         
 def parse_input(input_key, steering_pub, driving_pub):

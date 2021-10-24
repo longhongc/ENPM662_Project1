@@ -17,6 +17,9 @@ Visualization Manager:
     - Class: rviz/TF
       Name: TF
       Value: false
+    - Class: rviz/LaserScan
+      Enabled: true
+      Topic: newbot2/scan
   Global Options:
     Fixed Frame: base_link
     Frame Rate: 30

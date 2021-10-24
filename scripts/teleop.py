@@ -1,3 +1,11 @@
+##
+# @file teleop.py
+# @Brief Control the bot with wasdx key  
+# @author Chang-Hong Chen
+# @email longhongc@gmail.com
+# @version 1.0.0
+# @date 2021-10-23
+
 import time
 import signal
 import sys
@@ -12,10 +20,13 @@ class steering_talker:
         self.rate = rospy.Rate(10)
         self.steering_angle = 0
     def send_msg(self, key):
+        # Left
         if(key=='A' or key=='a'):
-            self.steering_angle -= 0.2
-        elif(key=='D' or key=='d'):
             self.steering_angle += 0.2
+        # Right
+        elif(key=='D' or key=='d'):
+            self.steering_angle -= 0.2
+        # Reset
         elif(key=='S' or key=='s'):
             self.steering_angle = 0.0
         self.pub.publish(self.steering_angle)
@@ -30,12 +41,15 @@ class driving_talker:
         self.wheels_velocity = [self.left_vel, self.right_vel]
     def send_msg(self, key):
         msg = Float64MultiArray()
+        # Forward
         if(key=='W' or key=='w'):
             self.left_vel += 0.1
             self.right_vel += 0.1
+        # Backward
         elif(key=='X' or key=='x'):
             self.left_vel -= 0.1
             self.right_vel -= 0.1
+        # Stop
         elif(key=='S' or key=='s'):
             self.left_vel = 0.0
             self.right_vel = 0.0
@@ -65,6 +79,7 @@ if __name__ == "__main__":
     steering_pub = steering_talker()
     driving_pub = driving_talker()
     while not rospy.is_shutdown():
+        # get user key input with enter
         val = getch.getch() 
         parse_input(val, steering_pub, driving_pub)
         time.sleep(0.1)

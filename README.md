@@ -50,6 +50,7 @@ pip3 install rospkg
 ```
 cd catkin_ws
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
+source devel/setup.bash
 ```
 ## Launch Simulation
 ### Gazebo+RVIZ

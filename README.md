@@ -37,16 +37,17 @@ joint_state_publisher (for rviz only)
 git clone https://github.com/ros/joint_state_publisher.git
 ```
 ### Gazebo Plugin
-roboticsgroup_upatras_gazebo_plugins
-This plugin is for mimicking different joinst value
+roboticsgroup_upatras_gazebo_plugins  
 ```
 git clone https://github.com/roboticsgroup/roboticsgroup_upatras_gazebo_plugins.git
 ```
+This plugin is for mimicking different joinst value
 ### Python Libraray
 ```
 pip3 install getch
 pip3 install rospkg
 ```
+getch is for receiving user keyboard input
 ## Build
 ```
 cd catkin_ws

@@ -7,6 +7,10 @@
     </plugin>
   </gazebo>
 
+  <!--third party mimic joints plugin -->
+  <!--https://github.com/roboticsgroup/roboticsgroup_upatras_gazebo_plugins -->
+  <!--There is a mimic attribute in the joint tag in urdf, but there remains some issue -->
+  <!--https://github.com/ros/robot_state_publisher/issues/1 -->
   <gazebo>
     <plugin name="gazebo_mimic_joint" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
       <joint>FL_J</joint> 
@@ -45,8 +49,6 @@
       </plugin>
     </sensor>
   </gazebo>
-
-
 
    <!--Wheels-->
   <gazebo reference="WFL_L">

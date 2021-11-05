@@ -38,6 +38,7 @@ git clone https://github.com/ros/joint_state_publisher.git
 ```
 ### Gazebo Plugin
 roboticsgroup_upatras_gazebo_plugins
+This plugin is for mimicking different joinst value
 ```
 git clone https://github.com/roboticsgroup/roboticsgroup_upatras_gazebo_plugins.git
 ```

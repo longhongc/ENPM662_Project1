@@ -16,6 +16,8 @@ newbot2:  # change the name
     joint: 'FL_J' # Name of the joint.  
     pid: {p: 100, i: 0.5, d: 10} # Enter your pid values eg. {p: 100.0 , i: 0.0 , d: 0.0} 
 
+  # Use the mimic gazebo plugin to replace the right steering controller
+  #
   # Controller right steering
   # FR_J_controller: # change the name
   #   type: effort_controllers/JointPositionController # Type of controller. 
